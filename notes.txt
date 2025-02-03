@@ -1,0 +1,9 @@
+go mod tidy
+  this will do retrieval and removal of packages as needed
+  and keep the dependecy files clean
+
+go get "package from pkg.go.dev"
+  adding packages to project
+
+go run .\packages\basics\main.go 
+  running program

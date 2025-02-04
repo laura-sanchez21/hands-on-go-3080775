@@ -7,3 +7,10 @@ go get "package from pkg.go.dev"
 
 go run .\packages\basics\main.go 
   running program
+
+strconv
+   used when converting integer to strings
+
+multi-value returns
+  func divde(num, age int, name string)(result, error)
+  

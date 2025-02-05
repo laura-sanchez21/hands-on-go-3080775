@@ -14,3 +14,7 @@ strconv
 multi-value returns
   func divde(num, age int, name string)(result, error)
   
+const
+  capitalizing const variables will make them exported
+  const MY_CONST = 100
+  const myConst = 200 unexported

@@ -1,39 +1,34 @@
 // challenges/types-primitive/begin/main.go
 package main
 
-import (
-	"fmt"
-)
+import "fmt"
 
 // use type inference to create a package-level variable "val" and assign it a value of "global"
-var val string = "temp"
+var val string = "global"
 
 func main() {
 	// create a local variable "val" and assign it an int value
-	val := 100
+	val := 42
+
 	// print the value of the local variable "val"
-	fmt.Printf("%v, %T\n",val, val)
+	fmt.Printf("%T, local val: %v\n", val, val)
+
 	// print the value of the package-level variable "val"
-	printingGlobalVariable()
+	globalVariable()
 	// update the package-level variable "val" and print it again
-	modifyingGlobalVariable("new temp")
-	printingGlobalVariable()
-
+	updateGlobalVariable("updated global")
+	globalVariable()
 	// print the pointer address of the local variable "val"
-	//fmt.Printf("%v", &val)
-	valAddress := &val
-	// assign a value directly to the pointer address of the local variable "val" 
-	//*(&val) = 10
-	*valAddress = 11
-	//and print the value of the local variable "val"
-	//fmt.Println("\n", val)
-	fmt.Println(val)
+	fmt.Printf("%T, local &val: %v ", &val, &val)
+	// assign a value directly to the pointer address of the local variable "val" and print the value of the local variable "val"
+	*(&val) = 100
+	fmt.Println("\nlocal val updated value: ", val)
 }
 
-func printingGlobalVariable() {
-	fmt.Println(val)
+func globalVariable() {
+	fmt.Println("global val: ", val)
 }
 
-func modifyingGlobalVariable(newString string) {
-	val = newString
+func updateGlobalVariable(newValue string) {
+	val = newValue
 }

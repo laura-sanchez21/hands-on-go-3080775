@@ -18,3 +18,34 @@ const
   capitalizing const variables will make them exported
   const MY_CONST = 100
   const myConst = 200 unexported
+
+Creating methods for struct specific types
+  func fullName(auth author) {
+    fmt.Println(auth.first, auth.last)
+  }
+    Explanation:
+    This is a regular function (not a method).
+    It takes an argument of type author (passed by value) and simply prints the first and last name.
+    The auth variable is passed to the function, so it's treated as a value of type author.
+    No receiver: This is just a function that takes an author as an argument.
+
+  func (auth author) fullName() string { 
+      return auth.first + " " + auth.last 
+  }
+    Explanation:
+    This is a method associated with the author type.
+    It has a receiver (auth author), which means it is a method on the author type and operates on instances of that type.
+    The fullName() method doesn't take the author as an argument; instead, it uses the receiver (auth) directly.
+    It returns a string that combines the first and last names.
+    Since this is a method, it can be called on an instance of author directly.
+
+    type author struct {
+    first string
+    last  string
+  }
+
+  auth := author{"John", "Doe"}
+  fullName(auth) // Calls the function and prints: John Doe
+
+  auth := author{"John", "Doe"}
+  fmt.Println(auth.fullName()) // Calls the method and prints: John Doe
